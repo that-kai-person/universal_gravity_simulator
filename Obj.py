@@ -58,19 +58,3 @@ class Obj:
 	
 	def __str__(self):
 		return f"{self.m}{self.x}{self.y}{self.vx}{self.vy}"
-	
-	def crash(obj_arr): #Collision function
-		for p in range(len(obj_arr)):
-			for q in range(p + 1, len(obj_arr)):
-				if abs(obj_arr[p].x - obj_arr[q].x) < (obj_arr[p].size+obj_arr[q].size) and abs(obj_arr[p].y - obj_arr[q].y) < (obj_arr[p].size+obj_arr[q].size):
-					
-					#Calculating using momentum
-					vx = (obj_arr[p].vx*obj_arr[p].m + obj_arr[q].vx*obj_arr[q].m)/(obj_arr[p].m+obj_arr[q].m)
-					vy = (obj_arr[p].vy*obj_arr[p].m + obj_arr[q].vy*obj_arr[q].m)/(obj_arr[p].m+obj_arr[q].m)
-					x = (obj_arr[p].x+obj_arr[q].x)/2
-					y = (obj_arr[p].y+obj_arr[q].y)/2
-					m = obj_arr[p].m+obj_arr[q].m
-					obj_arr[p] = Obj(m, x, y, vx, vy)
-					obj_arr[p].size = obj_arr[p].size + obj_arr[q].size
-					del obj_arr[q]
-					break
